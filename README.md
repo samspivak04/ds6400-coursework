@@ -1,2 +1,2 @@
-# ds6200-coursework
-Computation I: Fundamentals
+# ds6400-studentexploration1.2
+
