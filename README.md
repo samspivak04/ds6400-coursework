@@ -1,2 +1,2 @@
-# ds6400-studentexploration1.2
+# ds6400-coursework
 
