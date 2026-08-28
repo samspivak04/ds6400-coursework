@@ -1,0 +1,14 @@
+project:
+    type: book
+
+book:
+    title: "DS6400 Modules"
+    author: "Sam Spivak"
+    chapters:
+        - index.qmd
+        - error-estimation.qmd
+
+format:
+    html:
+        theme: cosmo
+        toc: true
