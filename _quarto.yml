@@ -7,6 +7,7 @@ book:
     chapters:
         - index.qmd
         - error-estimation.qmd
+        - cross-validation-student-exploration1-2.qmd
 
 format:
     html:
