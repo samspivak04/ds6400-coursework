@@ -20,4 +20,12 @@ What I did not understand:
 
 I would like to explore the last question for my simulation. I would like to test traditional and nested cross-validation on sets of things I understand in the real world (perhaps on Charlottesville weather data because I think I could find that easily) and see if I can predict the weather from the last few days. I will find out whether traditional or nested cross-validation predicts it better and I will use a small sample size (maybe only the data from a month ago).'''
 
-print("I am having more problems with Github commits.")
+# Simulation: CVille Weather 
+# i would like to put a python codeblock here but not sure how
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv("export.csv")
+# df = pd.DataFrame("export.csv")
+print(df)

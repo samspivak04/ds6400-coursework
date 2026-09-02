@@ -18,5 +18,15 @@
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Error Estimation Class 2 09/01/2026</span>"
     ]
+  },
+  {
+    "objectID": "cross-validation-student-exploration1-2.html",
+    "href": "cross-validation-student-exploration1-2.html",
+    "title": "2  Cross-Validation: Student Exploration 1.2",
+    "section": "",
+    "text": "3 Thoughts from before class 09/01:\n’’’To be honest, I really struggled reading this paper. I chose Cross-Validation: What Does It Estimate and How Well Does It Do It? by Bates et al. (2023). As a person who does not have a traditional stats or data science background, a lot of the topics were really unfamiliar to me. Initially, I used Copilot to compare/contrast a few of the vocab words (cross-validation, prediction error, data splitting, etc.), but I also had to consult Wikipedia quite often for exact definitions of many stats concepts. I found it much more beneficial to look at Wikipedia than to prompt Copilot because Wikipedia allows you to click on other topics from one page, and that helped me understand how the concepts were related. I think it would be most helpful to see examples of how traditional/naive cross-validation performs worse than nested cross-validation, but this paper did not really provide that other than a few diagrams which did not tell me much about how nested cross-validation could be used in the real world.\nWhat I learned/thought was interesting from this paper: 1. Traditional cross-validation is not good at estimating the accuracy of model fit on observed training data, but it is good at estimating average prediction error across (sometimes unseen) training sets. 2. Folds must be disjoint for cross-validation to work. 3. The confidence intervals of traditional cross-validation are much too narrow (they do not encompass the outliers well). 4. The estimate of variance with traditional cross-validation is too small.\nWhat I did not understand: 1. Where do the unseen training sets come from? 2. How is data splitting different from cross-validation? Does it depend on the number of folds? 3. Why is leave-one-out resampling empirical? What does empirical mean in this case? 4. What is asymptotic normality? 5. Can you cross-validate the cross-validation? 6. If you use cross-validation on a small sample size, do outliers have more impact? How can we use cross-validation on small sample sizes better?\nI would like to explore the last question for my simulation. I would like to test traditional and nested cross-validation on sets of things I understand in the real world (perhaps on Charlottesville weather data because I think I could find that easily) and see if I can predict the weather from the last few days. I will find out whether traditional or nested cross-validation predicts it better and I will use a small sample size (maybe only the data from a month ago).’’’\nprint(“I am having more problems with Github commits.”)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Cross-Validation: Student Exploration 1.2</span>"
+    ]
   }
 ]
