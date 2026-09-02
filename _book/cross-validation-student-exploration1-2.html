@@ -141,6 +141,8 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#thoughts-from-before-class-0901" id="toc-thoughts-from-before-class-0901" class="nav-link active" data-scroll-target="#thoughts-from-before-class-0901"><span class="header-section-number">3</span> Thoughts from before class 09/01:</a></li>
+  <li><a href="#simulation-cville-weather" id="toc-simulation-cville-weather" class="nav-link" data-scroll-target="#simulation-cville-weather"><span class="header-section-number">4</span> Simulation: CVille Weather</a></li>
+  <li><a href="#i-would-like-to-put-a-python-codeblock-here-but-not-sure-how" id="toc-i-would-like-to-put-a-python-codeblock-here-but-not-sure-how" class="nav-link" data-scroll-target="#i-would-like-to-put-a-python-codeblock-here-but-not-sure-how"><span class="header-section-number">5</span> i would like to put a python codeblock here but not sure how</a></li>
   </ul>
 </nav>
     </div>
@@ -172,7 +174,14 @@ ul.task-list li input[type="checkbox"] {
 <p>What I learned/thought was interesting from this paper: 1. Traditional cross-validation is not good at estimating the accuracy of model fit on observed training data, but it is good at estimating average prediction error across (sometimes unseen) training sets. 2. Folds must be disjoint for cross-validation to work. 3. The confidence intervals of traditional cross-validation are much too narrow (they do not encompass the outliers well). 4. The estimate of variance with traditional cross-validation is too small.</p>
 <p>What I did not understand: 1. Where do the unseen training sets come from? 2. How is data splitting different from cross-validation? Does it depend on the number of folds? 3. Why is leave-one-out resampling empirical? What does empirical mean in this case? 4. What is asymptotic normality? 5. Can you cross-validate the cross-validation? 6. If you use cross-validation on a small sample size, do outliers have more impact? How can we use cross-validation on small sample sizes better?</p>
 <p>I would like to explore the last question for my simulation. I would like to test traditional and nested cross-validation on sets of things I understand in the real world (perhaps on Charlottesville weather data because I think I could find that easily) and see if I can predict the weather from the last few days. I will find out whether traditional or nested cross-validation predicts it better and I will use a small sample size (maybe only the data from a month ago).’’’</p>
-<p>print(“I am having more problems with Github commits.”)</p>
+</section>
+<section id="simulation-cville-weather" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Simulation: CVille Weather</h1>
+</section>
+<section id="i-would-like-to-put-a-python-codeblock-here-but-not-sure-how" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> i would like to put a python codeblock here but not sure how</h1>
+<p>import numpy as np import matplotlib.pyplot as plt import pandas as pd</p>
+<p>df = pd.read_csv(“export.csv”) # df = pd.DataFrame(“export.csv”) df</p>
 
 
 </section>
