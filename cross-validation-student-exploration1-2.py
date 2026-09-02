@@ -28,11 +28,11 @@ import numpy as np
 import matplotlib.pyplot as plt 
 import pandas as pd
 
-df_Temps = pd.read_csv("export.csv") # display temperature data as dataframe
+df_Temps = pd.read_csv("export.csv") # display temperature data as dataframe, which came from Meteostat
 # df = pd.DataFrame("export.csv") 
 #print(df_Temps)
 
-df_AQI = pd.read_csv("aqidaily2026.csv") # display AQI data as dataframe
+df_AQI = pd.read_csv("aqidaily2026.csv") # display AQI data as dataframe, which came from the EPA's Air Quality Index Daily Values Report
 # print(df_AQI)
 nums = range(0, 237-26) # range function would not work inside .drop so i had to put it one line before
 df_AQI = df_AQI.drop(nums) # delete every row except ones with dates in August
@@ -40,4 +40,11 @@ df_AQI = df_AQI.reset_index(drop=True)
 #print(df_AQI)
 
 df = pd.concat([df_Temps, df_AQI], axis=1) # concatenate the two dataframes into one for all the meteorological data
+#print(df)
+
+# average temperature (celcius), precipitation (mm), overall AQI value, ozone AQI value, particulate matter < 2.5 micrometers AQI value
+df = df[['tavg', 'prcp', 'Overall AQI Value', 'Ozone', 'PM25']] # i chose only the columns with data i would be using. i'm not sure why two sets of brackets are needed but stack overflow said so
 print(df)
+
+# i have to convert the values to imperical measurements because i don't know what celcius or millimeters mean
+# i wanted to get humidity data but maybe for a later iteration of this simulation i will include it because it takes too much time right now and i need to get this done before thursday class
