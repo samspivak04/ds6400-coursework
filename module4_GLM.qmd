@@ -1,0 +1,8 @@
+```{markdown}
+This is my analysis and computational exploration of Module 4's Generalized Linear Models (Nelder and Wedderburn, 1972).
+
+
+```
+
+```{python}
+```

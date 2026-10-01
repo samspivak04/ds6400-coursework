@@ -1,0 +1,21 @@
+```{python}
+import numpy as np 
+import matplotlib.pyplot as plt 
+import pandas as pd
+import random  # from random
+
+df = pd.read_csv("gusto1.csv") 
+# df
+
+"""
+randnum = random.randrange(40830)
+randset = {}
+randset.add(randnum)
+"""
+randnum = random.randrange(572, 9165)  # sample size from the paper
+df.sample(n=randnum, random_state=randnum)  # random_state needs to be changed so it is truly "random"... not sure what it means nor how to do it
+```
+
+```{markdown}
+
+```

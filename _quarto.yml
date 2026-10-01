@@ -8,6 +8,8 @@ book:
         - index.qmd
         - error-estimation.qmd
         - cross-validation-student-exploration1-2.qmd
+        - paper2001simulation.qmd
+        - module4_GLM.qmd
 
 format:
     html:
