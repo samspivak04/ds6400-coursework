@@ -36,6 +36,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./paper2001simulation.html" rel="next">
 <link href="./error-estimation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -130,6 +131,18 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Cross-Validation: Student Exploration 1.2</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./paper2001simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">paper2001simulation.html</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./module4_GLM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">module4_GLM.html</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -143,6 +156,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#thoughts-from-before-class-0901" id="toc-thoughts-from-before-class-0901" class="nav-link active" data-scroll-target="#thoughts-from-before-class-0901"><span class="header-section-number">3</span> Thoughts from before class 09/01:</a></li>
   <li><a href="#simulation-cville-weather" id="toc-simulation-cville-weather" class="nav-link" data-scroll-target="#simulation-cville-weather"><span class="header-section-number">4</span> Simulation: CVille Weather</a></li>
   <li><a href="#i-would-like-to-put-a-python-codeblock-here-but-not-sure-how" id="toc-i-would-like-to-put-a-python-codeblock-here-but-not-sure-how" class="nav-link" data-scroll-target="#i-would-like-to-put-a-python-codeblock-here-but-not-sure-how"><span class="header-section-number">5</span> i would like to put a python codeblock here but not sure how</a></li>
+  <li><a href="#average-temperature-celcius-precipitation-mm-overall-aqi-value-ozone-aqi-value-particulate-matter-2.5-micrometers-aqi-value" id="toc-average-temperature-celcius-precipitation-mm-overall-aqi-value-ozone-aqi-value-particulate-matter-2.5-micrometers-aqi-value" class="nav-link" data-scroll-target="#average-temperature-celcius-precipitation-mm-overall-aqi-value-ozone-aqi-value-particulate-matter-2.5-micrometers-aqi-value"><span class="header-section-number">6</span> average temperature (celcius), precipitation (mm), overall AQI value, ozone AQI value, particulate matter &lt; 2.5 micrometers AQI value</a></li>
+  <li><a href="#i-have-to-convert-the-values-to-imperical-measurements-because-i-dont-know-what-celcius-or-millimeters-mean" id="toc-i-have-to-convert-the-values-to-imperical-measurements-because-i-dont-know-what-celcius-or-millimeters-mean" class="nav-link" data-scroll-target="#i-have-to-convert-the-values-to-imperical-measurements-because-i-dont-know-what-celcius-or-millimeters-mean"><span class="header-section-number">7</span> i have to convert the values to imperical measurements because i don’t know what celcius or millimeters mean</a></li>
+  <li><a href="#i-wanted-to-get-humidity-data-but-maybe-for-a-later-iteration-of-this-simulation-i-will-include-it-because-it-takes-too-much-time-right-now-and-i-need-to-get-this-done-before-thursday-class" id="toc-i-wanted-to-get-humidity-data-but-maybe-for-a-later-iteration-of-this-simulation-i-will-include-it-because-it-takes-too-much-time-right-now-and-i-need-to-get-this-done-before-thursday-class" class="nav-link" data-scroll-target="#i-wanted-to-get-humidity-data-but-maybe-for-a-later-iteration-of-this-simulation-i-will-include-it-because-it-takes-too-much-time-right-now-and-i-need-to-get-this-done-before-thursday-class"><span class="header-section-number">8</span> i wanted to get humidity data but maybe for a later iteration of this simulation i will include it because it takes too much time right now and i need to get this done before thursday class</a></li>
   </ul>
 </nav>
     </div>
@@ -181,7 +197,19 @@ ul.task-list li input[type="checkbox"] {
 <section id="i-would-like-to-put-a-python-codeblock-here-but-not-sure-how" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> i would like to put a python codeblock here but not sure how</h1>
 <p>import numpy as np import matplotlib.pyplot as plt import pandas as pd</p>
-<p>df = pd.read_csv(“export.csv”) # df = pd.DataFrame(“export.csv”) df</p>
+<p>df_Temps = pd.read_csv(“export.csv”) # display temperature data as dataframe, which came from Meteostat # df = pd.DataFrame(“export.csv”) #print(df_Temps)</p>
+<p>df_AQI = pd.read_csv(“aqidaily2026.csv”) # display AQI data as dataframe, which came from the EPA’s Air Quality Index Daily Values Report # print(df_AQI) nums = range(0, 237-26) # range function would not work inside .drop so i had to put it one line before df_AQI = df_AQI.drop(nums) # delete every row except ones with dates in August df_AQI = df_AQI.reset_index(drop=True) #print(df_AQI)</p>
+<p>df = pd.concat([df_Temps, df_AQI], axis=1) # concatenate the two dataframes into one for all the meteorological data #print(df)</p>
+</section>
+<section id="average-temperature-celcius-precipitation-mm-overall-aqi-value-ozone-aqi-value-particulate-matter-2.5-micrometers-aqi-value" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> average temperature (celcius), precipitation (mm), overall AQI value, ozone AQI value, particulate matter &lt; 2.5 micrometers AQI value</h1>
+<p>df = df[[‘tavg’, ‘prcp’, ‘Overall AQI Value’, ‘Ozone’, ‘PM25’]] # i chose only the columns with data i would be using. i’m not sure why two sets of brackets are needed but stack overflow said so print(df)</p>
+</section>
+<section id="i-have-to-convert-the-values-to-imperical-measurements-because-i-dont-know-what-celcius-or-millimeters-mean" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> i have to convert the values to imperical measurements because i don’t know what celcius or millimeters mean</h1>
+</section>
+<section id="i-wanted-to-get-humidity-data-but-maybe-for-a-later-iteration-of-this-simulation-i-will-include-it-because-it-takes-too-much-time-right-now-and-i-need-to-get-this-done-before-thursday-class" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> i wanted to get humidity data but maybe for a later iteration of this simulation i will include it because it takes too much time right now and i need to get this done before thursday class</h1>
 
 
 </section>
@@ -594,6 +622,9 @@ ul.task-list li input[type="checkbox"] {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./paper2001simulation.html" class="pagination-link" aria-label="paper2001simulation.html">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">paper2001simulation.html</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
