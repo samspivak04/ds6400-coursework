@@ -21,25 +21,35 @@ This is my analysis and computational exploration of Module 3's Generalized Line
     - Poisson distribution: probability of events occuring in one (fixed) interval (discrete)
     - gamma distribution: includes the chi-squared distribution and other continuous probability distributions (continuous)
 
+Parts of a GLM:
+- random component: how is the variable distributed? (normal, binary, Bernoulli, Poisson, binomial, etc.) GLMs allow this to be from the exponential family.
+- systematic component: linear combination of predictors (independent variables); looks like linear regression because it is of the form b0 + b1x1 + b2x2 + ... + bnxn
+- link function: a function that connects the linear predictor to the expected value in the dataset
+
 # Expressing GLMs mathematically:
 
-Usually we would express linear models as y = mx + b or some other equation that assumes all our data can fit a certain line or one of the distributions defined above. 
+Usually we would express linear models as y = mx + b or some other equation that assumes all our data can fit a certain line or one of the distributions defined above. We use the same linear structure for the systematic component of GLMs: p = b0 + b1x1 + b2x2 + ... + bnxn. I chose p to mean linear predictor. The b's are the coefficients and the x's are the variables. In linear regression, these variables would have to all be independent, but that is not necessarily the case for GLMs.
 
 # Demonstrating the model with code:
+I used a dataset I found on Kaggle about animal shelter intakes and outcomes. I want to plot the probability of certain shelter outcomes based on the age upon outcome.
 
 # Visualizations of the prediction relationship:
 
 # Special considerations for using GLMs:
+GLMs are good for data that is not linear (cannot be modeled well with linear regression). It is important to consider what your data is describing before choosing a model.
 
 # Final thoughts and further questions:
 
 # Sources:
 - Generalized Linear Models (Nelder and Wedderburn, 1972)
+- dataset: https://www.kaggle.com/datasets/jackdaoud/animal-shelter-analytics 
 - https://www.geeksforgeeks.org/data-science/probability-distributions-in-data-science/
 - https://scikit-learn.org/stable/auto_examples/linear_model/index.html
 - https://en.wikipedia.org/wiki/Probit
 - https://en.wikipedia.org/wiki/Weighted_least_squares
 - https://www.youtube.com/watch?v=S0ptaAXNxBU 
+- https://www.statology.org/a-beginners-guide-to-generalized-linear-models-glms/ 
+- https://matplotlib.org/stable/users/explain/quick_start.html 
 
 ```
 
@@ -48,7 +58,29 @@ import numpy as np
 import pandas as pd
 import scipy
 import sklearn
+import matplotlib.pyplot as plt
 # from sklearn.linear_model import *
 
+df_intakes = pd.read_csv("Austin_Animal_Center_Intakes.csv")  # dataset from Kaggle
+df_intakes
+```
+
+```{python}
+df_outcomes = pd.read_csv("Austin_Animal_Center_Outcomes.csv")  # dataset from Kaggle
+df_outcomes
+```
+```{python}
+df_intakes.info(verbose=True)
+```
+```{python}
+df_outcomes.info(verbose=True)
+```
+```{python}
+df_outcomes['Age upon Outcome'].value_counts()
+
+for i in df_outcomes['Age upon Outcome']:
+    for character in i:
+        if character.isnumeric():
+            print(character)
 
 ```
