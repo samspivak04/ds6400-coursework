@@ -1,3 +1,9 @@
+--- 
+title: "Module 3 GLM" 
+jupyter: venv 
+---
+
+
 ```{markdown}
 This is my analysis and computational exploration of Module 3's Generalized Linear Models (Nelder and Wedderburn, 1972).
 
@@ -69,18 +75,18 @@ df_intakes
 df_outcomes = pd.read_csv("Austin_Animal_Center_Outcomes.csv")  # dataset from Kaggle
 df_outcomes
 ```
+
 ```{python}
 df_intakes.info(verbose=True)
 ```
+
 ```{python}
 df_outcomes.info(verbose=True)
 ```
-```{python}
-df_outcomes['Age upon Outcome'].value_counts()
 
-for i in df_outcomes['Age upon Outcome']:
-    for character in i:
-        if character.isnumeric():
-            print(character)
+```{python}
+df_outcomes['Outcome Type'].value_counts()
+
+
 
 ```
