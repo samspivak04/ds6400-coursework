@@ -181,6 +181,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Module 3 GLM</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nonlinearity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">nonlinearity.html</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -195,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div id="4cc23419" class="cell" data-execution_count="1">
+<div id="24cdf6bc" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -244,35 +250,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">33421</th>
-<td>33422</td>
-<td>0</td>
-<td>1</td>
-<td>50.102</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
+<th data-quarto-table-cell-role="th">20506</th>
+<td>20507</td>
 <td>0</td>
 <td>0</td>
-<td>...</td>
-<td>0</td>
-<td>0</td>
-<td>5</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>28</td>
-<td>63</td>
-<td>9</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">24053</th>
-<td>24054</td>
-<td>0</td>
-<td>0</td>
-<td>46.383</td>
+<td>61.023</td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
@@ -280,77 +262,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0</td>
 <td>0</td>
 <td>...</td>
-<td>0</td>
-<td>0</td>
-<td>9</td>
 <td>1</td>
 <td>1</td>
-<td>2</td>
-<td>18</td>
-<td>39</td>
-<td>7</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">37326</th>
-<td>37327</td>
-<td>1</td>
-<td>0</td>
-<td>62.758</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>...</td>
-<td>0</td>
-<td>1</td>
-<td>7</td>
-<td>1</td>
-<td>0</td>
-<td>2</td>
-<td>31</td>
-<td>70</td>
-<td>11</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">7684</th>
-<td>7685</td>
-<td>0</td>
-<td>0</td>
-<td>84.391</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>...</td>
-<td>1</td>
-<td>0</td>
 <td>3</td>
 <td>0</td>
 <td>1</td>
 <td>1</td>
-<td>15</td>
-<td>32</td>
-<td>5</td>
+<td>6</td>
+<td>96</td>
+<td>2</td>
 <td>0</td>
 </tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">8713</th>
+<td>8714</td>
+<td>0</td>
+<td>0</td>
+<td>49.016</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>30</td>
+<td>67</td>
+<td>10</td>
+<td>1</td>
+</tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">35270</th>
-<td>35271</td>
+<th data-quarto-table-cell-role="th">30518</th>
+<td>30519</td>
 <td>0</td>
 <td>0</td>
-<td>54.484</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
+<td>55.508</td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
 <td>...</td>
 <td>0</td>
 <td>1</td>
@@ -358,8 +316,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>1</td>
 <td>1</td>
 <td>2</td>
-<td>20</td>
-<td>44</td>
+<td>24</td>
+<td>54</td>
+<td>8</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">25691</th>
+<td>25692</td>
+<td>0</td>
+<td>0</td>
+<td>72.266</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>1</td>
+<td>1</td>
+<td>7</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>7</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8613</th>
+<td>8614</td>
+<td>0</td>
+<td>1</td>
+<td>75.641</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>5</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>21</td>
+<td>43</td>
 <td>7</td>
 <td>1</td>
 </tr>
@@ -388,107 +394,107 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2721</th>
-<td>2722</td>
+<th data-quarto-table-cell-role="th">10614</th>
+<td>10615</td>
 <td>0</td>
 <td>0</td>
-<td>72.359</td>
-<td>1</td>
-<td>1</td>
+<td>53.094</td>
 <td>0</td>
 <td>1</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>...</td>
-<td>0</td>
-<td>0</td>
-<td>4</td>
-<td>0</td>
 <td>1</td>
-<td>2</td>
-<td>10</td>
-<td>21</td>
-<td>4</td>
 <td>1</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">35331</th>
-<td>35332</td>
-<td>0</td>
-<td>1</td>
-<td>64.031</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>...</td>
-<td>1</td>
-<td>0</td>
 <td>4</td>
 <td>0</td>
 <td>0</td>
 <td>2</td>
-<td>22</td>
-<td>47</td>
-<td>8</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">38802</th>
-<td>38803</td>
-<td>0</td>
-<td>0</td>
-<td>66.625</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>...</td>
-<td>1</td>
-<td>0</td>
-<td>4</td>
-<td>0</td>
-<td>0</td>
-<td>2</td>
-<td>35</td>
-<td>80</td>
-<td>12</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">39865</th>
-<td>39866</td>
-<td>0</td>
-<td>0</td>
-<td>72.984</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>...</td>
-<td>1</td>
-<td>1</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>19</td>
 <td>42</td>
-<td>102</td>
+<td>7</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">33902</th>
+<td>33903</td>
+<td>0</td>
+<td>0</td>
+<td>61.336</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>41</td>
+<td>100</td>
 <td>14</td>
 <td>1</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">8746</th>
-<td>8747</td>
+<th data-quarto-table-cell-role="th">8554</th>
+<td>8555</td>
 <td>0</td>
 <td>0</td>
-<td>62.188</td>
+<td>51.945</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>23</td>
+<td>50</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">18936</th>
+<td>18937</td>
+<td>0</td>
+<td>0</td>
+<td>46.977</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>...</td>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>28</td>
+<td>63</td>
+<td>9</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">26716</th>
+<td>26717</td>
+<td>0</td>
+<td>0</td>
+<td>57.469</td>
 <td>0</td>
 <td>2</td>
 <td>0</td>
@@ -498,19 +504,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>...</td>
 <td>0</td>
 <td>0</td>
-<td>8</td>
+<td>1</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
-<td>2</td>
-<td>24</td>
-<td>54</td>
-<td>8</td>
-<td>1</td>
+<td>15</td>
+<td>110</td>
+<td>5</td>
+<td>0</td>
 </tr>
 </tbody>
 </table>
 
-<p>8120 rows × 27 columns</p>
+<p>7780 rows × 27 columns</p>
 </div>
 </div>
 </div>

@@ -71,6 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./nonlinearity.html" rel="next">
 <link href="./paper2001simulation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -113,6 +114,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -180,13 +210,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Module 3 GLM</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nonlinearity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">nonlinearity.html</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#concepts-from-this-paper" id="toc-concepts-from-this-paper" class="nav-link active" data-scroll-target="#concepts-from-this-paper"><span class="header-section-number">5</span> Concepts from this paper:</a></li>
+  <li><a href="#expressing-glms-mathematically" id="toc-expressing-glms-mathematically" class="nav-link" data-scroll-target="#expressing-glms-mathematically"><span class="header-section-number">6</span> Expressing GLMs mathematically:</a></li>
+  <li><a href="#demonstrating-the-model-with-code" id="toc-demonstrating-the-model-with-code" class="nav-link" data-scroll-target="#demonstrating-the-model-with-code"><span class="header-section-number">7</span> Demonstrating the model with code:</a></li>
+  <li><a href="#visualizations-of-the-prediction-relationship" id="toc-visualizations-of-the-prediction-relationship" class="nav-link" data-scroll-target="#visualizations-of-the-prediction-relationship"><span class="header-section-number">8</span> Visualizations of the prediction relationship:</a></li>
+  <li><a href="#special-considerations-for-using-glms" id="toc-special-considerations-for-using-glms" class="nav-link" data-scroll-target="#special-considerations-for-using-glms"><span class="header-section-number">9</span> Special considerations for using GLMs:</a></li>
+  <li><a href="#final-thoughts-and-further-questions" id="toc-final-thoughts-and-further-questions" class="nav-link" data-scroll-target="#final-thoughts-and-further-questions"><span class="header-section-number">10</span> Final thoughts and further questions:</a></li>
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources"><span class="header-section-number">11</span> Sources:</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -210,68 +258,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<pre class="{markdown}"><code>This is my analysis and computational exploration of Module 3's Generalized Linear Models (Nelder and Wedderburn, 1972).
-
-# Concepts from this paper:
-- linear model: continuous outcome variable y with independent variables x subscript n where n is the number of independent variables
-    - E[y|x1, x2, x3] = b0 + (b1x1 + b2x1^2 + b3x1^3)x3 + (b4x2 + b5x2^2 + b6x2^3)x3, etc.
-    - = b0 + {x3 = never, sum of i = 1-3 of }
-    - mean E, variance V, OLS or MLE can estimate model (what is the best choice based on the data we have?)
-
-- generalized linear models (GLM): model we can fit when we assume the outcome is binary, Bernoulli, Poisson, binomial, etc. (logistic regression is an example); linear models generalized to distributions that are in the exponential family
-- probit analysis: assigning each variable a score based on how similar/close it is to the mean (z-scores? variance?)
-- density function:
-- logistic regression:
-- least squares: fitting line/curve/model/function to data (regression) by finding the residuals (true value - predicted value) of each point, then squaring the residuals (so they are positive), and adding them all up to find the total error; we want to minimize the total error to find the line of best fit (optimization)
-- weighted least squares: 
-- distributions:
-    - normal distribution: bell curve (continuous)
-    - binomial distribution: bar chart where the x-axis is the number of positive outcomes and the y-axis is the probability of that number of positive outcomes, using multiple trials (discrete)
-    - multinomial distribution: 
-    - Bernoulli distribution: one trial with two outcomes (discrete)
-    - Poisson distribution: probability of events occuring in one (fixed) interval (discrete)
-    - gamma distribution: includes the chi-squared distribution and other continuous probability distributions (continuous)
-
-Parts of a GLM:
-- random component: how is the variable distributed? (normal, binary, Bernoulli, Poisson, binomial, etc.) GLMs allow this to be from the exponential family.
-- systematic component: linear combination of predictors (independent variables); looks like linear regression because it is of the form b0 + b1x1 + b2x2 + ... + bnxn
-- link function: a function that connects the linear predictor to the expected value in the dataset
-
-# Expressing GLMs mathematically:
-
-Usually we would express linear models as y = mx + b or some other equation that assumes all our data can fit a certain line or one of the distributions defined above. We use the same linear structure for the systematic component of GLMs: p = b0 + b1x1 + b2x2 + ... + bnxn. I chose p to mean linear predictor. The b's are the coefficients and the x's are the variables. In linear regression, these variables would have to all be independent, but that is not necessarily the case for GLMs.
-
-# Demonstrating the model with code:
-I used a dataset I found on Kaggle about animal shelter intakes and outcomes. I want to plot the probability of certain shelter outcomes based on the age upon outcome.
-
-# Visualizations of the prediction relationship:
-
-# Special considerations for using GLMs:
-GLMs are good for data that is not linear (cannot be modeled well with linear regression). It is important to consider what your data is describing before choosing a model.
-
-# Final thoughts and further questions:
-
-# Sources:
-- Generalized Linear Models (Nelder and Wedderburn, 1972)
-- dataset: https://www.kaggle.com/datasets/jackdaoud/animal-shelter-analytics 
-- https://www.geeksforgeeks.org/data-science/probability-distributions-in-data-science/
-- https://scikit-learn.org/stable/auto_examples/linear_model/index.html
-- https://en.wikipedia.org/wiki/Probit
-- https://en.wikipedia.org/wiki/Weighted_least_squares
-- https://www.youtube.com/watch?v=S0ptaAXNxBU 
-- https://www.statology.org/a-beginners-guide-to-generalized-linear-models-glms/ 
-- https://matplotlib.org/stable/users/explain/quick_start.html 
-</code></pre>
-<div id="ab9fbb54" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># from sklearn.linear_model import *</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>df_intakes <span class="op">=</span> pd.read_csv(<span class="st">"Austin_Animal_Center_Intakes.csv"</span>)  <span class="co"># dataset from Kaggle</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>df_intakes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This is my analysis and computational exploration of Module 3’s Generalized Linear Models (Nelder and Wedderburn, 1972).</p>
+<section id="concepts-from-this-paper" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Concepts from this paper:</h1>
+<ul>
+<li>linear model: continuous outcome variable y with independent variables x subscript n where n is the number of independent variables
+<ul>
+<li><span class="math inline">\(E[y|x1, x2, x3] = b0 + (b1x1 + b2x1^2 + b3x1^3)x3 + (b4x2 + b5x2^2 + b6x2^3)x3\)</span>, etc.</li>
+<li>= b0 + {x3 = never, sum of i = 1-3 of }</li>
+<li>mean E, variance V, OLS or MLE can estimate model (what is the best choice based on the data we have?)</li>
+</ul></li>
+<li>generalized linear models (GLM): model we can fit when we assume the outcome is binary, Bernoulli, Poisson, binomial, etc. (logistic regression is an example); linear models generalized to distributions that are in the exponential family</li>
+<li>probit analysis: assigning each variable a score based on how similar/close it is to the mean (z-scores? variance?)</li>
+<li>density function:</li>
+<li>logistic regression:</li>
+<li>least squares: fitting line/curve/model/function to data (regression) by finding the residuals (true value - predicted value) of each point, then squaring the residuals (so they are positive), and adding them all up to find the total error; we want to minimize the total error to find the line of best fit (optimization)</li>
+<li>weighted least squares:</li>
+<li>distributions:
+<ul>
+<li>normal distribution: bell curve (continuous)</li>
+<li>binomial distribution: bar chart where the x-axis is the number of positive outcomes and the y-axis is the probability of that number of positive outcomes, using multiple trials (discrete)</li>
+<li>multinomial distribution:</li>
+<li>Bernoulli distribution: one trial with two outcomes (discrete)</li>
+<li>Poisson distribution: probability of events occuring in one (fixed) interval (discrete)</li>
+<li>gamma distribution: includes the chi-squared distribution and other continuous probability distributions (continuous)</li>
+</ul></li>
+</ul>
+<p>Parts of a GLM: - random component: how is the variable distributed? (normal, binary, Bernoulli, Poisson, binomial, etc.) GLMs allow this to be from the exponential family. - systematic component: linear combination of predictors (independent variables); looks like linear regression because it is of the form b0 + b1x1 + b2x2 + … + bnxn - link function: a function that connects the linear predictor to the expected value in the dataset</p>
+</section>
+<section id="expressing-glms-mathematically" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Expressing GLMs mathematically:</h1>
+<p>Usually we would express linear models as y = mx + b or some other equation that assumes all our data can fit a certain line or one of the distributions defined above. We use the same linear structure for the systematic component of GLMs: p = b0 + b1x1 + b2x2 + … + bnxn. I chose p to mean linear predictor. The b’s are the coefficients and the x’s are the variables. In linear regression, these variables would have to all be independent, but that is not necessarily the case for GLMs.</p>
+</section>
+<section id="demonstrating-the-model-with-code" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Demonstrating the model with code:</h1>
+<p>I used a dataset I found on Kaggle about animal shelter intakes and outcomes. I want to plot the probability of certain shelter outcomes based on the age upon outcome.</p>
+</section>
+<section id="visualizations-of-the-prediction-relationship" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Visualizations of the prediction relationship:</h1>
+</section>
+<section id="special-considerations-for-using-glms" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Special considerations for using GLMs:</h1>
+<p>GLMs are good for data that is not linear (cannot be modeled well with linear regression). It is important to consider what your data is describing before choosing a model.</p>
+</section>
+<section id="final-thoughts-and-further-questions" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Final thoughts and further questions:</h1>
+</section>
+<section id="sources" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Sources:</h1>
+<ul>
+<li>Generalized Linear Models (Nelder and Wedderburn, 1972)</li>
+<li>dataset: https://www.kaggle.com/datasets/jackdaoud/animal-shelter-analytics</li>
+<li>https://www.geeksforgeeks.org/data-science/probability-distributions-in-data-science/</li>
+<li>https://scikit-learn.org/stable/auto_examples/linear_model/index.html</li>
+<li>https://en.wikipedia.org/wiki/Probit</li>
+<li>https://en.wikipedia.org/wiki/Weighted_least_squares</li>
+<li>https://www.youtube.com/watch?v=S0ptaAXNxBU</li>
+<li>https://www.statology.org/a-beginners-guide-to-generalized-linear-models-glms/</li>
+<li>https://matplotlib.org/stable/users/explain/quick_start.html</li>
+</ul>
+<div id="b63fb95c" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># from sklearn.linear_model import *</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df_intakes <span class="op">=</span> pd.read_csv(<span class="st">"Austin_Animal_Center_Intakes.csv"</span>)  <span class="co"># dataset from Kaggle</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df_intakes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
@@ -467,9 +522,9 @@ GLMs are good for data that is not linear (cannot be modeled well with linear re
 </div>
 </div>
 </div>
-<div id="cc817d2f" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_outcomes <span class="op">=</span> pd.read_csv(<span class="st">"Austin_Animal_Center_Outcomes.csv"</span>)  <span class="co"># dataset from Kaggle</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df_outcomes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="0ff46a61" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df_outcomes <span class="op">=</span> pd.read_csv(<span class="st">"Austin_Animal_Center_Outcomes.csv"</span>)  <span class="co"># dataset from Kaggle</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df_outcomes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
@@ -665,8 +720,8 @@ GLMs are good for data that is not linear (cannot be modeled well with linear re
 </div>
 </div>
 </div>
-<div id="f7111cd1" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_intakes.info(verbose<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="57d97538" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_intakes.info(verbose<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.DataFrame'&gt;
 RangeIndex: 124120 entries, 0 to 124119
@@ -689,8 +744,8 @@ dtypes: str(12)
 memory usage: 11.4 MB</code></pre>
 </div>
 </div>
-<div id="3f81ab8e" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_outcomes.info(verbose<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="73a316ef" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_outcomes.info(verbose<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.DataFrame'&gt;
 RangeIndex: 124491 entries, 0 to 124490
@@ -713,8 +768,8 @@ dtypes: str(12)
 memory usage: 11.4 MB</code></pre>
 </div>
 </div>
-<div id="791a755e" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_outcomes[<span class="st">'Outcome Type'</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e26b1bd3" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_outcomes[<span class="st">'Outcome Type'</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>Outcome Type
 Adoption           55347
@@ -731,6 +786,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1140,6 +1196,9 @@ Name: count, dtype: int64</code></pre>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./nonlinearity.html" class="pagination-link" aria-label="nonlinearity.html">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">nonlinearity.html</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

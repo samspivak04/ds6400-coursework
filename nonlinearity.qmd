@@ -1,0 +1,11 @@
+Nonlinearity Notes for 10/29/2026
+
+| Model | Polynomials | Orthogonal Polynomials | Bernstein Polynomials | Linear Splines | Cubic Splines | Restricted Cubic Splines (RCS) | Kernels |
+|------|------|------|------|------|------|------|------|
+| Basis | $$\( 1, x, x^2, x^3 \)$$; linear, parabolic, exponential | $$\( 1, x^2 \perp x, x^3 \perp x, x \)$$; linear, parabolic, exponential | $$\( \binom{d}{k} ( x^k ) (1-x)^{d-k} \)$$; skewed right | $$(x-c)_+    | C    | A    | A    |
+| Tail | h    | G    | A    | B    | C    | B    | B    |
+| Choices | G    | G    | A    | B    | C    | C    | C    |
+
+: My Caption {#tbl-letters}
+
+See @tbl-letters.
