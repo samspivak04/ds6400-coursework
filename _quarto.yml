@@ -10,6 +10,7 @@ book:
         - cross-validation-student-exploration1-2.qmd
         - paper2001simulation.qmd
         - module3_GLM.qmd
+        - nonlinearity.qmd
 
 format:
     html:
