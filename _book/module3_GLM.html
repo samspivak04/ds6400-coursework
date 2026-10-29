@@ -317,7 +317,7 @@ window.Quarto = {
 <li>https://www.statology.org/a-beginners-guide-to-generalized-linear-models-glms/</li>
 <li>https://matplotlib.org/stable/users/explain/quick_start.html</li>
 </ul>
-<div id="7213b9ea" class="cell" data-execution_count="1">
+<div id="c92d0ae8" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
@@ -522,7 +522,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="72c7babe" class="cell" data-execution_count="2">
+<div id="e107736d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df_outcomes <span class="op">=</span> pd.read_csv(<span class="st">"Austin_Animal_Center_Outcomes.csv"</span>)  <span class="co"># dataset from Kaggle</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df_outcomes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -720,7 +720,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="11bb91e9" class="cell" data-execution_count="3">
+<div id="6032f1df" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_intakes.info(verbose<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.DataFrame'&gt;
@@ -744,7 +744,7 @@ dtypes: str(12)
 memory usage: 11.4 MB</code></pre>
 </div>
 </div>
-<div id="78df90db" class="cell" data-execution_count="4">
+<div id="d2b031af" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_outcomes.info(verbose<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.DataFrame'&gt;
@@ -768,7 +768,7 @@ dtypes: str(12)
 memory usage: 11.4 MB</code></pre>
 </div>
 </div>
-<div id="40d25a46" class="cell" data-execution_count="5">
+<div id="14476175" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_outcomes[<span class="st">'Outcome Type'</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>Outcome Type

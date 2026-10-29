@@ -9,3 +9,46 @@ Nonlinearity Notes for 10/29/2026
 : Basic Expansion Models {#tbl-bem}
 
 See @tbl-bem.
+
+dataset: https://trends.google.com/explore?geo=US&q=tate%2520mcrae&date=2019-01-01%202026-10-28
+
+```{python}
+import numpy as np
+import pandas as pd
+import scipy
+import sklearn
+import matplotlib.pyplot as plt
+# from sklearn.linear_model import *
+
+tatedf = pd.read_csv("time_series_US_20190101-0000_20261028-2107.csv")  # dataset from Google Trends
+tatedf
+```
+```{python}
+tatedf.describe()
+```
+```{python}
+tatedf.info()
+```
+```{python}
+# plt.style.use('_mpl-gallery')
+
+# insert data
+# x = tatedf["Time"]
+# y = tatedf
+# x2 = np.linspace(0, 10, 25)
+# y2 = 4 + 1 * np.sin(2 * x2)
+
+# plot
+# fig, ax = plt.subplots()
+
+# ax.plot(x2, y2 + 2.5, 'x', markeredgewidth=2)
+# ax.plot(x, y)
+# ax.plot(x2, y2 - 2.5, 'o-', linewidth=2)
+
+# ax.set(xlim=(0, 8), xticks=np.arange(1, 8), ylim=(0, 8), yticks=np.arange(1, 8))
+
+# plt.show()
+
+tatedf.plot(x='Time', y='tate mcrae', kind='line')
+plt.show()
+```
