@@ -23,6 +23,11 @@ import matplotlib.pyplot as plt
 
 habitsdf = pd.read_csv("student_habits_performance.csv")  # dataset from Kaggle
 habitsdf
+# habitsdf['study_hours_per_day'].to_dict()
+
+# n = 100 # 100 data points
+# X = 6 * np.random.rand(n,1)-4
+# print(X.type())
 ```
 ```{python}
 habitsdf.describe()
@@ -50,12 +55,12 @@ habitsdf.info()
 
 # plt.show()
 
-habitsdf.plot(x='social_media_hours', y='exam_score', kind='scatter')
+habitsdf.plot(x='study_hours_per_day', y='exam_score', kind='scatter')
 plt.show()
 ```
 ```{python}
-habitsdf.plot(x='social_media_hours', y='exam_score', kind='line')
-plt.show()
+# habitsdf.plot(x='study_hours_per_day', y='exam_score', kind='line')
+# plt.show()
 ```
 # Polynomials
 ```{python}
@@ -64,6 +69,20 @@ plt.show()
 # from sklearn.linear_model import LogisticRegression
 # from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import PolynomialFeatures
-x_values=habitsdf['social_media_hours']
+x_values=habitsdf['study_hours_per_day']  # class
 y_values=habitsdf['exam_score']
+
+fitfunction = np.poly1d(np.polyfit(x_values, y_values, 3))
+
+
+# poly_features = PolynomialFeatures(degree=3)  # decide the maximal degree of the polynomial feature: i chose degree 3 because the relationship looked like it could be modeled with an odd function
+
+# x_poly = poly_features.fit_transform(x_values, y_values)  # convert the original feature to polynomial feature: i put in the true values and want the polynomial feature
+
+# check the extened polynomial features of the first data point
+print('original feature (true values):', x_values[0])
+print('polynomial features:', fitfunction)
+```
+```{python}
+from sklearn.linear_model import LinearRegression
 ```
