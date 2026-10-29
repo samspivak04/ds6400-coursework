@@ -1,4 +1,4 @@
-Nonlinearity Notes for 10/29/2026
+## Nonlinearity Notes for 10/29/2026
 
 | Model | Polynomials | Orthogonal Polynomials | Bernstein Polynomials | Linear Splines | Cubic Splines | Restricted Cubic Splines (RCS) | Kernels |
 |------|------|------|------|------|------|------|------|
@@ -49,6 +49,10 @@ tatedf.info()
 
 # plt.show()
 
+tatedf.plot(x='Time', y='tate mcrae', kind='scatter')
+plt.show()
+```
+```{python}
 tatedf.plot(x='Time', y='tate mcrae', kind='line')
 plt.show()
 ```
