@@ -10,8 +10,9 @@
 
 See @tbl-bem.
 
-dataset: https://trends.google.com/explore?geo=US&q=tate%2520mcrae&date=2019-01-01%202026-10-28
+dataset: https://www.kaggle.com/datasets/jayaantanaath/student-habits-vs-academic-performance/data
 
+# True Values (plots of dataset)
 ```{python}
 import numpy as np
 import pandas as pd
@@ -20,14 +21,14 @@ import sklearn
 import matplotlib.pyplot as plt
 # from sklearn.linear_model import *
 
-tatedf = pd.read_csv("time_series_US_20190101-0000_20261028-2107.csv")  # dataset from Google Trends
-tatedf
+habitsdf = pd.read_csv("student_habits_performance.csv")  # dataset from Kaggle
+habitsdf
 ```
 ```{python}
-tatedf.describe()
+habitsdf.describe()
 ```
 ```{python}
-tatedf.info()
+habitsdf.info()
 ```
 ```{python}
 # plt.style.use('_mpl-gallery')
@@ -49,10 +50,20 @@ tatedf.info()
 
 # plt.show()
 
-tatedf.plot(x='Time', y='tate mcrae', kind='scatter')
+habitsdf.plot(x='social_media_hours', y='exam_score', kind='scatter')
 plt.show()
 ```
 ```{python}
-tatedf.plot(x='Time', y='tate mcrae', kind='line')
+habitsdf.plot(x='social_media_hours', y='exam_score', kind='line')
 plt.show()
+```
+# Polynomials
+```{python}
+# from sklearn.model_selection import train_test_split
+# from sklearn.preprocessing import StandardScaler
+# from sklearn.linear_model import LogisticRegression
+# from sklearn.metrics import accuracy_score
+from sklearn.preprocessing import PolynomialFeatures
+x_values=habitsdf['social_media_hours']
+y_values=habitsdf['exam_score']
 ```
