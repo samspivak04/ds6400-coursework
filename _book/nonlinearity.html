@@ -75,6 +75,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -162,6 +191,73 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<p>Nonlinearity Notes for 10/29/2026</p>
+<div id="tbl-bem" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Basic Expansion Models
+</figcaption>
+<div aria-describedby="tbl-bem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Polynomials</th>
+<th>Orthogonal Polynomials</th>
+<th>Bernstein Polynomials</th>
+<th>Linear Splines</th>
+<th>Cubic Splines</th>
+<th>Restricted Cubic Splines (RCS)</th>
+<th>Kernels</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Basis</td>
+<td><span class="math display">\[1, x, x^2, x^3\]</span>; linear, parabolic, exponential</td>
+<td><span class="math display">\[1, x^2 \perp x, x^3 \perp x, x\]</span>; linear, parabolic, exponential</td>
+<td><span class="math display">\[\binom{d}{k} ( x^k ) (1-x)^{d-k}\]</span>; skewed right</td>
+<td><span class="math display">\[(x-c)_+\]</span>; rectified linear unit (ReLU) activation function</td>
+<td><span class="math display">\[x, x^2, x^3, (x-c)^3_+\]</span></td>
+<td><span class="math display">\[w(x-c)^3_+\]</span></td>
+<td><span class="math display">\[k(x-c)\]</span>; bell curve (normal distribution), skewed right</td>
+</tr>
+<tr class="even">
+<td>Tail</td>
+<td><span class="math display">\[\infty , - \infty\]</span>; unstable</td>
+<td><span class="math display">\[\infty , - \infty\]</span>; potential</td>
+<td>A</td>
+<td>linear</td>
+<td>exponential (fast)</td>
+<td>linear</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td>Choices</td>
+<td>G</td>
+<td>G</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>See <a href="#tbl-bem" class="quarto-xref">Table&nbsp;<span>1</span></a>.</p>
 
 
 
