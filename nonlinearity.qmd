@@ -86,3 +86,33 @@ print('polynomial features:', fitfunction)
 ```{python}
 from sklearn.linear_model import LinearRegression
 ```
+Sources:
+- https://tgstewart.cloud/ml1/04-nonlinearity.html
+- https://tgstewart.cloud/ipm/linear-model.html
+- https://tgstewart.cloud/ipm/nonlinear.html
+- https://quarto.org/docs/authoring/tables.html
+- https://www.fabriziomusacchio.com/blog/2021-08-10-How_to_use_LaTeX_in_Markdown/
+- https://www.overleaf.com/learn/latex/Subscripts_and_superscripts
+- https://quarto.org/docs/tools/vscode/index.html
+- https://en.wikipedia.org/wiki/Spline_(mathematics)
+- https://en.wikipedia.org/wiki/Rectified_linear_unit
+- https://quickref.me/latex.html
+- https://en.wikipedia.org/wiki/Potential_function
+- https://www.itl.nist.gov/div898/strd/nls/data/LINKS/c-misra1a.shtml
+- https://www.geeksforgeeks.org/pandas/how-to-plot-a-dataframe-using-pandas/
+- https://matplotlib.org/stable/gallery/subplots_axes_and_figures/axes_demo.html
+- https://matplotlib.org/stable/users/explain/axes/axes_ticks.html
+- https://docs.scipy.org/doc/scipy/tutorial/index.html#user-guide
+- https://pytutorial.com/build-ml-models-with-scikit-learn-python-guide/
+- https://en.wikipedia.org/wiki/Feature_(machine_learning)
+- https://www.kaggle.com/datasets/jayaantanaath/student-habits-vs-academic-performance/data
+- https://scikit-learn.org/stable/api/sklearn.model_selection.html
+- https://scikit-learn.org/stable/api/sklearn.linear_model.html
+- https://scikit-learn.org/stable/modules/preprocessing.html#polynomial-features
+- https://www.kaggle.com/code/lxlz1986/polynomial-regression-in-scikit-learn
+- https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.values.html
+- https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_dict.html
+- https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.to_numpy.html
+- https://stackoverflow.com/questions/32660231/how-to-fit-a-polynomial-curve-to-data-using-scikit-learn
+- https://www.kaggle.com/code/lxlz1986/polynomial-regression-in-scikit-learn
+- https://stats.stackexchange.com/questions/58739/polynomial-regression-using-scikit-learn
